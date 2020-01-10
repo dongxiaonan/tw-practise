@@ -23,7 +23,7 @@ public class YuanyinTest {
 
     @ParameterizedTest
     @CsvSource({
-            "hmm, false", "abc, false", "ab, true"
+            "hmm, false", "abc, true", "ab, true"
     })
     public void ShouldReturnCanReplace(String str, boolean expected){
         Assertions.assertEquals(expected, YuanyinPractise.CanReplace(str));

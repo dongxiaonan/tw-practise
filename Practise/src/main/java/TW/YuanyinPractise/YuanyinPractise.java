@@ -15,10 +15,18 @@ public class YuanyinPractise {
         yuanyinChars.add('O');
         yuanyinChars.add('u');
         yuanyinChars.add('U');
+
         return yuanyinChars.contains(a);
     }
 
     public static boolean CanReplace(String str) {
-        return false;
+        int yuanyinLength = 0;
+        for (int i = 0; i < str.length() ; i = i+1){
+            if (IsYuanyin(str.charAt(i))){
+                yuanyinLength++;
+            }
+        }
+
+        return (float)yuanyinLength / str.length() > 0.3;
     }
 }
