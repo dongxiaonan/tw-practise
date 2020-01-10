@@ -11,7 +11,11 @@ public class YuanyinTest {
             "e, true",
             "i, true",
             "o, true",
-            "u, true"
+            "u, true",
+            "A, true",
+            "x, false",
+            "0, false",
+            "&, false"
     })
     public void ShouldReturnIsYuanyin(char letter, boolean expected){
         Assertions.assertEquals(expected, YuanyinPractise.IsYuanyin(letter));
