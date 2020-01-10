@@ -17,4 +17,8 @@ public class YuanyinPractise {
         yuanyinChars.add('U');
         return yuanyinChars.contains(a);
     }
+
+    public static boolean CanReplace(String str) {
+        return false;
+    }
 }

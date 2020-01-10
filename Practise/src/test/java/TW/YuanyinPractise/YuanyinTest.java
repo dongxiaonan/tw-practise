@@ -20,4 +20,12 @@ public class YuanyinTest {
     public void ShouldReturnIsYuanyin(char letter, boolean expected){
         Assertions.assertEquals(expected, YuanyinPractise.IsYuanyin(letter));
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "hmm, false", "abc, false", "ab, true"
+    })
+    public void ShouldReturnCanReplace(String str, boolean expected){
+        Assertions.assertEquals(expected, YuanyinPractise.CanReplace(str));
+    }
 }
