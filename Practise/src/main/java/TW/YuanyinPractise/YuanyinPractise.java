@@ -1,6 +1,7 @@
 package TW.YuanyinPractise;
 
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 public class YuanyinPractise {
     public static boolean IsYuanyin(char a) {
@@ -20,13 +21,9 @@ public class YuanyinPractise {
     }
 
     public static boolean CanReplace(String str) {
-        int yuanyinLength = 0;
-        for (int i = 0; i < str.length() ; i = i+1){
-            if (IsYuanyin(str.charAt(i))){
-                yuanyinLength++;
-            }
-        }
+        Stream<Character> characterStream = str.chars().mapToObj(i -> (char) i);
+        float count = characterStream.filter(YuanyinPractise::IsYuanyin).count();
 
-        return (float)yuanyinLength / str.length() > 0.3;
+        return count / str.length() > 0.3;
     }
 }
