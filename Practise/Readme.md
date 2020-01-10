@@ -27,3 +27,8 @@
 - 连续元音， 仅替换一次
 
 
+#Notes:
+- mark dic as source folder first, then use refactor tool to generate file and put it into target folder
+
+
+
