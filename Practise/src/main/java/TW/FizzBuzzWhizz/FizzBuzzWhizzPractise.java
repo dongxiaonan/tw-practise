@@ -19,6 +19,10 @@ public class FizzBuzzWhizzPractise {
         if (i%5 == 0){
             output += "Buzz";
         }
+
+        if (i%7 == 0){
+            output += "Wihzz";
+        }
         return output;
     }
 }
