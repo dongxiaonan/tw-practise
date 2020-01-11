@@ -1,6 +1,7 @@
 package TW.YuanyinPractise;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -35,5 +36,11 @@ public class YuanyinTest {
     })
     public void ShouldReplaceYuanyin(String input, String expected){
         Assertions.assertEquals(expected, YuanyinPractise.Handle(input));
+    }
+
+    @Test
+    public void ShouldNotHandleWhenInputInvalid(){
+        Assertions.assertEquals(null, YuanyinPractise.Handle(null));
+        Assertions.assertEquals("", YuanyinPractise.Handle(""));
     }
 }
