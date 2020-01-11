@@ -11,6 +11,10 @@ public class FizzBuzzWhizzPractise {
     }
 
     public static String fizzBuzz(int i) {
-        return null;
+        String output = "";
+        if (i%3 == 0){
+            output += "Fizz";
+        }
+        return output;
     }
 }
