@@ -29,4 +29,9 @@ public class FizzBuzzWhizzPractiseTest {
     public void ShouldReturnCombinedStringWhenCanDividedByMoreThanOnNumber(int input, String expected){
         assertEquals(expected, FizzBuzzWhizzPractise.fizzBuzz(input));
     }
+
+    @Test
+    public void ShouldReturnNumberWhenNotMatchAnyRule(){
+        assertEquals("1", FizzBuzzWhizzPractise.fizzBuzz(1));
+    }
 }
