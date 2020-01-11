@@ -23,6 +23,6 @@ public class FizzBuzzWhizzPractise {
         if (i%7 == 0){
             output += "Wihzz";
         }
-        return output;
+        return output.isEmpty() ? Integer.toString(i) : output;
     }
 }
