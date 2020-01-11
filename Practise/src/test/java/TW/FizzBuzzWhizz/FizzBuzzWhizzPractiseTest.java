@@ -52,7 +52,7 @@ public class FizzBuzzWhizzPractiseTest {
 
     @ParameterizedTest
     @CsvSource({
-            "7, Whizz", "75, Fizz", "17, 17"
+            "7, Whizz", "75, Fizz", "17, 17", "735, Fizz"
     })
     public void ShouldReturnCombinedStringWhenContainsSeven(int input, String expected){
         assertEquals(expected, FizzBuzzWhizzPractise.fizzBuzz(input));
