@@ -21,7 +21,7 @@ public class FizzBuzzWhizzPractise {
         }
 
         if (i%7 == 0){
-            output += "Wihzz";
+            output += "Whizz";
         }
         return output.isEmpty() ? Integer.toString(i) : output;
     }

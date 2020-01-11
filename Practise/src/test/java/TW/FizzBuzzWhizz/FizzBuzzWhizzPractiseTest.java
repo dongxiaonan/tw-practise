@@ -18,13 +18,13 @@ public class FizzBuzzWhizzPractiseTest {
     }
 
     @Test
-    public void ShouldReturnWihzzWhenCanDividedBySeven(){
-        assertEquals("Wihzz", FizzBuzzWhizzPractise.fizzBuzz(7));
+    public void ShouldReturnWhizzWhenCanDividedBySeven(){
+        assertEquals("Whizz", FizzBuzzWhizzPractise.fizzBuzz(7));
     }
 
     @ParameterizedTest
     @CsvSource({
-            "21, FizzWihzz", "60, FizzBuzz", "140, BuzzWihzz", "210, FizzBuzzWihzz"
+            "21, FizzWhizz", "60, FizzBuzz", "140, BuzzWhizz", "210, FizzBuzzWhizz"
     })
     public void ShouldReturnCombinedStringWhenCanDividedByMoreThanOnNumber(int input, String expected){
         assertEquals(expected, FizzBuzzWhizzPractise.fizzBuzz(input));
