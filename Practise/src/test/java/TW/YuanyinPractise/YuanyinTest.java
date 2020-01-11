@@ -31,7 +31,7 @@ public class YuanyinTest {
 
     @ParameterizedTest
     @CsvSource({
-            "hmm, hmm", "she, shmommy", "hear, hmommyr"
+            "hmm, hmm", "she, shmommy", "hear, hmommyr", "Oppo, mommyppmommy"
     })
     public void ShouldReplaceYuanyin(String input, String expected){
         Assertions.assertEquals(expected, YuanyinPractise.Handle(input));
