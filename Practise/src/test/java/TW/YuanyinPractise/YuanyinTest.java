@@ -24,7 +24,7 @@ public class YuanyinTest {
 
     @Test
     public void ShouldNotHandleWhenInputInvalid(){
-        Assertions.assertEquals(null, YuanyinPractise.Handle(null));
+        Assertions.assertNull(YuanyinPractise.Handle(null));
         Assertions.assertEquals("", YuanyinPractise.Handle(""));
     }
 }
