@@ -1,6 +1,8 @@
 package TW.FizzBuzzWhizz;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -18,5 +20,13 @@ public class FizzBuzzWhizzPractiseTest {
     @Test
     public void ShouldReturnWihzzWhenCanDividedBySeven(){
         assertEquals("Wihzz", FizzBuzzWhizzPractise.fizzBuzz(7));
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "21, FizzWihzz", "60, FizzBuzz", "140, BuzzWihzz", "210, FizzBuzzWihzz"
+    })
+    public void ShouldReturnCombinedStringWhenCanDividedByMoreThanOnNumber(int input, String expected){
+        assertEquals(expected, FizzBuzzWhizzPractise.fizzBuzz(input));
     }
 }
