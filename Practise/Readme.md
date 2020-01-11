@@ -30,5 +30,6 @@
 #Notes:
 - mark dic as source folder first, then use refactor tool to generate file and put it into target folder
 - 对string中逐个字符的判断尚有很多总实现
+- use regex to handle replace string
 
 
