@@ -3,6 +3,7 @@ package TW.FizzBuzzWhizz;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -33,5 +34,11 @@ public class FizzBuzzWhizzPractiseTest {
     @Test
     public void ShouldReturnNumberWhenNotMatchAnyRule(){
         assertEquals("1", FizzBuzzWhizzPractise.fizzBuzz(1));
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {13, 63, 30})
+    public void ShouldReturnFizzWhenContainsThree(int input){
+        assertEquals("Fizz", FizzBuzzWhizzPractise.fizzBuzz(input));
     }
 }
