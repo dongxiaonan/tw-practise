@@ -49,4 +49,12 @@ public class FizzBuzzWhizzPractiseTest {
     public void ShouldReturnCombinedStringWhenContainsFive(int input, String expected){
         assertEquals(expected, FizzBuzzWhizzPractise.fizzBuzz(input));
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "7, Whizz", "75, Fizz", "17, 17"
+    })
+    public void ShouldReturnCombinedStringWhenContainsSeven(int input, String expected){
+        assertEquals(expected, FizzBuzzWhizzPractise.fizzBuzz(input));
+    }
 }
