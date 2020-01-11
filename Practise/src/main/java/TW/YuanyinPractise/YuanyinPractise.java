@@ -29,7 +29,7 @@ public class YuanyinPractise {
 
     public static String Handle(String input) {
         if (CanReplace(input)){
-            return input.replaceAll("[aeiou]+", "mommy");
+            return input.replaceAll("(?i)[aeiou]+", "mommy");
         }
         return input;
     }
