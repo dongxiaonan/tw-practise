@@ -14,4 +14,9 @@ public class FizzBuzzWhizzPractiseTest {
     public void ShouldReturnBuzzWhenCanDividedByFive(){
         assertEquals("Buzz", FizzBuzzWhizzPractise.fizzBuzz(5));
     }
+
+    @Test
+    public void ShouldReturnWihzzWhenCanDividedBySeven(){
+        assertEquals("Wihzz", FizzBuzzWhizzPractise.fizzBuzz(7));
+    }
 }
