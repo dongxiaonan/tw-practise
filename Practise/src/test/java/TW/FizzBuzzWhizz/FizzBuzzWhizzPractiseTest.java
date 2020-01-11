@@ -44,7 +44,7 @@ public class FizzBuzzWhizzPractiseTest {
 
     @ParameterizedTest
     @CsvSource({
-            "5, Buzz", "15, Buzz", "35, BuzzWhizz", "151, Buzz", "56, Whizz"
+            "5, Buzz", "15, Buzz", "35, BuzzWhizz", "151, 151", "56, Whizz"
     })
     public void ShouldReturnCombinedStringWhenContainsFive(int input, String expected){
         assertEquals(expected, FizzBuzzWhizzPractise.fizzBuzz(input));

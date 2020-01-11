@@ -25,7 +25,10 @@ public class FizzBuzzWhizzPractise {
         }
 
         String inputStr = Integer.toString(i);
-        if (inputStr.contains("3")){
+        if (inputStr.contains("5")){
+            output = output.replace("Fizz", "");
+        }
+        else if (inputStr.contains("3")){
             output = "Fizz";
         }
 
