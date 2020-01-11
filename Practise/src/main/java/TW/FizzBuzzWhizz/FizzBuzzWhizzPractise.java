@@ -23,6 +23,12 @@ public class FizzBuzzWhizzPractise {
         if (i%7 == 0){
             output += "Whizz";
         }
-        return output.isEmpty() ? Integer.toString(i) : output;
+
+        String inputStr = Integer.toString(i);
+        if (inputStr.contains("3")){
+            output = "Fizz";
+        }
+
+        return output.isEmpty() ? inputStr : output;
     }
 }
