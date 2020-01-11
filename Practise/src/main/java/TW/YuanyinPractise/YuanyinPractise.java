@@ -26,4 +26,8 @@ public class YuanyinPractise {
 
         return count / str.length() > 0.3;
     }
+
+    public static String Handle(String input) {
+        return null;
+    }
 }

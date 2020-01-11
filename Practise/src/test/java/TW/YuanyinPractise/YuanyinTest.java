@@ -28,4 +28,12 @@ public class YuanyinTest {
     public void ShouldReturnCanReplace(String str, boolean expected){
         Assertions.assertEquals(expected, YuanyinPractise.CanReplace(str));
     }
+
+    @ParameterizedTest
+    @CsvSource({
+            "hmm, hmm", "she, shmommy", "hear, hmommyr"
+    })
+    public void ShouldReplaceYuanyin(String input, String expected){
+        Assertions.assertEquals(expected, YuanyinPractise.Handle(input));
+    }
 }
