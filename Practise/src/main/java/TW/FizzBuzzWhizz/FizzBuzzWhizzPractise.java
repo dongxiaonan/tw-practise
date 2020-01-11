@@ -10,7 +10,7 @@ public class FizzBuzzWhizzPractise {
         }
     }
 
-    private static String fizzBuzz(int i) {
+    public static String fizzBuzz(int i) {
         return null;
     }
 }
