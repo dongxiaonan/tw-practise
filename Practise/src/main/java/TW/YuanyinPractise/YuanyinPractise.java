@@ -28,6 +28,9 @@ public class YuanyinPractise {
     }
 
     public static String Handle(String input) {
-        return null;
+        if (CanReplace(input)){
+            return null;
+        }
+        return input;
     }
 }
