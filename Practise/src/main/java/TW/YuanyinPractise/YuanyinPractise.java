@@ -21,6 +21,10 @@ public class YuanyinPractise {
     }
 
     public static boolean CanReplace(String str) {
+        if (str == null){
+            return false;
+        }
+
         Stream<Character> characterStream = str.chars().mapToObj(i -> (char) i);
         float count = characterStream.filter(YuanyinPractise::IsYuanyin).count();
 
