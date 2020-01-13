@@ -32,6 +32,13 @@
 - can move
 - can turn
 
+Actual doing:
+- setup init order
+- handle init order
+- override equals
+
+
+
 ## Note:
 1. Why could not auto download and install pkg by maven? -- mockito
 
