@@ -9,5 +9,9 @@ public class MarsOrder {
         startPoint = point;
         startDirection = direction;
     }
+
+    public MarsOrder(OrderType orderType) {
+        this.orderType = orderType;
+    }
 }
 

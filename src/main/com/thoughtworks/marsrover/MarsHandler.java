@@ -14,6 +14,19 @@ public class MarsHandler {
         }
         var position = new MarsPosition(initOrder.startPoint, initOrder.startDirection);
 
+        for (int index = 1; index < marsOrder.size() ; index++) {
+            MarsOrder order = marsOrder.get(index);
+            switch (order.orderType){
+                case MOVE:
+                    switch (position.direction){
+                        case N -> position.point.marsY++;
+                        case S -> position.point.marsY--;
+                        case E -> position.point.marsX++;
+                        case W -> position.point.marsX--;
+                    }
+            }
+        }
+
         return position;
     }
 }

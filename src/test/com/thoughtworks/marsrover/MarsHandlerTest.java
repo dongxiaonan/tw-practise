@@ -37,4 +37,13 @@ public class MarsHandlerTest {
         MarsPosition positionTwo = new MarsPosition(new MarsPoint(0, 0), Direction.N);
         assertEquals(positionOne, positionTwo);
     }
+
+    @Test
+    public void should_move_next_when_handle_move_order(){
+        MarsPoint startPoint = new MarsPoint(0, 0);
+        MarsOrder initOrder = new MarsOrder(startPoint, Direction.N);
+        MarsOrder moveOrder = new MarsOrder(OrderType.MOVE);
+        MarsPosition actualPosition = MarsHandler.Handle(Arrays.asList(initOrder, moveOrder));
+        assertEquals(new MarsPosition(new MarsPoint(0, 1), Direction.N), actualPosition);
+    }
 }
