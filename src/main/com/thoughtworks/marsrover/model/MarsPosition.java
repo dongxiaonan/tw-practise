@@ -1,4 +1,4 @@
-package com.thoughtworks.marsrover;
+package com.thoughtworks.marsrover.model;
 
 public class MarsPosition {
     public MarsPoint point;

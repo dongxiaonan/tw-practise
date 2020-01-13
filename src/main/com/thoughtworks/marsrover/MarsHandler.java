@@ -1,5 +1,9 @@
 package com.thoughtworks.marsrover;
 
+import com.thoughtworks.marsrover.model.MarsOrder;
+import com.thoughtworks.marsrover.model.MarsPosition;
+import com.thoughtworks.marsrover.model.OrderType;
+
 import java.util.List;
 
 public class MarsHandler {
