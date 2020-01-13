@@ -46,4 +46,13 @@ public class MarsHandlerTest {
         MarsPosition actualPosition = MarsHandler.Handle(Arrays.asList(initOrder, moveOrder));
         assertEquals(new MarsPosition(new MarsPoint(0, 1), Direction.N), actualPosition);
     }
+
+    @Test
+    public void should_turn_left_when_handle_turn_left_order(){
+        MarsPoint startPoint = new MarsPoint(0, 0);
+        MarsOrder initOrder = new MarsOrder(startPoint, Direction.N);
+        MarsOrder moveOrder = new MarsOrder(OrderType.TURNL);
+        MarsPosition actualPosition = MarsHandler.Handle(Arrays.asList(initOrder, moveOrder));
+        assertEquals(new MarsPosition(startPoint, Direction.W), actualPosition);
+    }
 }
