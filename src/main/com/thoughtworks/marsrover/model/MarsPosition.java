@@ -16,6 +16,11 @@ public class MarsPosition {
         }
 
         MarsPosition newOne = (MarsPosition)obj;
-        return this.point == newOne.point && this.direction == newOne.direction;
+        return this.point.equals(newOne.point) && this.direction == newOne.direction;
+    }
+
+    @Override
+    public int hashCode(){
+        return 0;
     }
 }
