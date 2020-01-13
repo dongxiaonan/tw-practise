@@ -20,18 +20,28 @@ public class MarsHandler {
             switch (order.orderType){
                 case MOVE -> MoveNext(position);
                 case TURNL -> TurnLeft(position);
+                case TURNR -> TurnRight(position);
             }
         }
 
         return position;
     }
 
+    private static void TurnRight(MarsPosition position) {
+        switch (position.direction){
+            case N -> position.direction = Direction.E;
+            case S -> position.direction = Direction.W;
+            case E -> position.direction = Direction.S;
+            case W -> position.direction = Direction.N;
+        }
+    }
+
     private static void TurnLeft(MarsPosition position) {
         switch (position.direction){
-            case N -> position.direction =Direction.W;
-            case S -> position.direction =Direction.E;
-            case E -> position.direction =Direction.N;
-            case W -> position.direction =Direction.S;
+            case N -> position.direction = Direction.W;
+            case S -> position.direction = Direction.E;
+            case E -> position.direction = Direction.N;
+            case W -> position.direction = Direction.S;
         }
     }
 
