@@ -12,12 +12,9 @@ public class MarsHandler {
         if (!isInputOrdersValid(marsOrder)){
             return null;
         }
-        MarsOrder initOrder = marsOrder.get(0);
 
-        var position = new MarsPosition(initOrder.startPoint, initOrder.startDirection);
-
-        for (int index = 1; index < marsOrder.size() ; index++) {
-            MarsOrder order = marsOrder.get(index);
+        MarsPosition position = initMarsPosition(marsOrder);
+        for (MarsOrder order : marsOrder){
             switch (order.orderType){
                 case MOVE -> MoveNext(position);
                 case TURNL, TURNR -> Turn(order.orderType, position);
@@ -25,6 +22,12 @@ public class MarsHandler {
         }
 
         return position;
+    }
+
+    private static MarsPosition initMarsPosition(List<MarsOrder> marsOrder) {
+        MarsOrder initOrder = marsOrder.get(0);
+
+        return new MarsPosition(initOrder.startPoint, initOrder.startDirection);
     }
 
     private static boolean isInputOrdersValid(List<MarsOrder> marsOrder) {
