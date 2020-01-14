@@ -9,10 +9,11 @@ import java.util.List;
 
 public class MarsHandler {
     public static MarsPosition Handle(List<MarsOrder> marsOrder) {
-        MarsOrder initOrder = marsOrder.get(0);
-        if (initOrder == null || initOrder.orderType != OrderType.INIT){
+        if (!isInputOrdersValid(marsOrder)){
             return null;
         }
+        MarsOrder initOrder = marsOrder.get(0);
+
         var position = new MarsPosition(initOrder.startPoint, initOrder.startDirection);
 
         for (int index = 1; index < marsOrder.size() ; index++) {
@@ -24,6 +25,16 @@ public class MarsHandler {
         }
 
         return position;
+    }
+
+    private static boolean isInputOrdersValid(List<MarsOrder> marsOrder) {
+        int[] initOrderIndex = marsOrder
+                .stream()
+                .filter(order -> order != null && order.orderType == OrderType.INIT)
+                .mapToInt(marsOrder::indexOf)
+                .toArray();
+
+        return initOrderIndex.length == 1 && initOrderIndex[0] == 0;
     }
 
     private static void Turn(OrderType orderType, MarsPosition position) {

@@ -90,4 +90,13 @@ public class MarsHandlerTest {
         MarsOrder moveOrder = new MarsOrder(OrderType.MOVE);
         assertNull(MarsHandler.Handle(Arrays.asList(moveOrder, initOrder)));
     }
+
+    @Test
+    public void should_return_null_when_more_than_one_init_order(){
+        MarsPoint startPoint = new MarsPoint(0, 0);
+        MarsOrder initOrder = new MarsOrder(startPoint, Direction.N);
+
+        MarsOrder moveOrder = new MarsOrder(OrderType.MOVE);
+        assertNull(MarsHandler.Handle(Arrays.asList(initOrder, moveOrder, initOrder)));
+    }
 }
