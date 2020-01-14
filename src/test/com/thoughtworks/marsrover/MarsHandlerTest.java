@@ -4,8 +4,7 @@ import com.thoughtworks.marsrover.model.*;
 import org.junit.Test;
 import java.util.Arrays;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.*;
 
 public class MarsHandlerTest {
     @Test
@@ -75,5 +74,20 @@ public class MarsHandlerTest {
 
         MarsPosition actualPosition = MarsHandler.Handle(Arrays.asList(initOrder, moveOrder, turnRightOrder, moveOrder, turnLeftOrder));
         assertEquals(new MarsPosition(new MarsPoint(1, 1), Direction.N), actualPosition);
+    }
+
+    @Test
+    public void should_return_null_when_no_init_order(){
+        MarsOrder moveOrder = new MarsOrder(OrderType.MOVE);
+        assertNull(MarsHandler.Handle(Arrays.asList(moveOrder)));
+    }
+
+    @Test
+    public void should_return_null_when_init_order_not_first(){
+        MarsPoint startPoint = new MarsPoint(0, 0);
+        MarsOrder initOrder = new MarsOrder(startPoint, Direction.N);
+
+        MarsOrder moveOrder = new MarsOrder(OrderType.MOVE);
+        assertNull(MarsHandler.Handle(Arrays.asList(moveOrder, initOrder)));
     }
 }
