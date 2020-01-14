@@ -28,12 +28,10 @@ public class MarsHandler {
     }
 
     private static void TurnRight(MarsPosition position) {
-        switch (position.direction){
-            case N -> position.direction = Direction.E;
-            case S -> position.direction = Direction.W;
-            case E -> position.direction = Direction.S;
-            case W -> position.direction = Direction.N;
-        }
+        Direction[] allDirections = Direction.values();
+        int directionLength = allDirections.length;
+        int newDirectionIndex = (directionLength + position.direction.ordinal() + 1) % directionLength;
+        position.direction = allDirections[newDirectionIndex];
     }
 
     private static void TurnLeft(MarsPosition position) {

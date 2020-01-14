@@ -1,8 +1,10 @@
 package com.thoughtworks.marsrover;
 
+import com.thoughtworks.marsrover.model.Direction;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -33,5 +35,13 @@ public class HelloWorldTest {
 
         //then
         assertEquals(actual, "Hello World");
+    }
+    @Test
+    public void  test(){
+        Direction[] values = Direction.values();
+        Direction x = Direction.valueOf("N");
+        int hashCode = Direction.N.hashCode();
+        int ordinal = Direction.N.ordinal();
+        assertTrue(true);
     }
 }
