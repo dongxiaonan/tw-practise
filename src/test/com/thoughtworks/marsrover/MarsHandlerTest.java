@@ -20,14 +20,14 @@ public class MarsHandlerTest {
     public void should_not_equal_when_direction_not_same(){
         MarsPosition positionOne = new MarsPosition(new MarsPoint(0, 0), Direction.N);
         MarsPosition positionTwo = new MarsPosition(new MarsPoint(0, 0), Direction.S);
-        assertNotEquals(positionOne, positionTwo);
+        assertNotSame(positionOne, positionTwo);
     }
 
     @Test
     public void should_not_equal_when_point_not_same(){
         MarsPosition positionOne = new MarsPosition(new MarsPoint(0, 0), Direction.N);
         MarsPosition positionTwo = new MarsPosition(new MarsPoint(0, 1), Direction.N);
-        assertNotEquals(positionOne, positionTwo);
+        assertNotSame(positionOne, positionTwo);
     }
 
     @Test

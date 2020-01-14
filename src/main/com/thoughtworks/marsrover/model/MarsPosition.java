@@ -1,5 +1,8 @@
 package com.thoughtworks.marsrover.model;
 
+import lombok.EqualsAndHashCode;
+
+@EqualsAndHashCode
 public class MarsPosition {
     public MarsPoint point;
     public Direction direction;
@@ -7,20 +10,5 @@ public class MarsPosition {
     public MarsPosition(MarsPoint initPoint, Direction initDirection) {
         point = initPoint;
         direction = initDirection;
-    }
-
-    @Override
-    public boolean equals(Object obj){
-        if (obj == null || obj.getClass() != this.getClass()){
-            return false;
-        }
-
-        MarsPosition newOne = (MarsPosition)obj;
-        return this.point.equals(newOne.point) && this.direction == newOne.direction;
-    }
-
-    @Override
-    public int hashCode(){
-        return 0;
     }
 }
