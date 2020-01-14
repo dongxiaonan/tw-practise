@@ -99,4 +99,12 @@ public class MarsHandlerTest {
         MarsOrder moveOrder = new MarsOrder(OrderType.MOVE);
         assertNull(MarsHandler.Handle(Arrays.asList(initOrder, moveOrder, initOrder)));
     }
+
+    @Test
+    public void should_return_null_order_when_contains_invalid_order(){
+        MarsPoint startPoint = new MarsPoint(0, 0);
+        MarsOrder initOrder = new MarsOrder(startPoint, Direction.N);
+
+        assertNull(MarsHandler.Handle(Arrays.asList(initOrder, null)));
+    }
 }

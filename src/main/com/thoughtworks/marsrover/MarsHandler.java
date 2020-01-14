@@ -6,6 +6,7 @@ import com.thoughtworks.marsrover.model.MarsPosition;
 import com.thoughtworks.marsrover.model.OrderType;
 
 import java.util.List;
+import java.util.Objects;
 
 public class MarsHandler {
     public static MarsPosition Handle(List<MarsOrder> marsOrder) {
@@ -24,13 +25,11 @@ public class MarsHandler {
         return position;
     }
 
-    private static MarsPosition initMarsPosition(List<MarsOrder> marsOrder) {
-        MarsOrder initOrder = marsOrder.get(0);
-
-        return new MarsPosition(initOrder.startPoint, initOrder.startDirection);
-    }
-
     private static boolean isInputOrdersValid(List<MarsOrder> marsOrder) {
+        if (marsOrder.stream().anyMatch(Objects::isNull)){
+            return false;
+        }
+
         int[] initOrderIndex = marsOrder
                 .stream()
                 .filter(order -> order != null && order.orderType == OrderType.INIT)
@@ -38,6 +37,12 @@ public class MarsHandler {
                 .toArray();
 
         return initOrderIndex.length == 1 && initOrderIndex[0] == 0;
+    }
+
+    private static MarsPosition initMarsPosition(List<MarsOrder> marsOrder) {
+        MarsOrder initOrder = marsOrder.get(0);
+
+        return new MarsPosition(initOrder.startPoint, initOrder.startDirection);
     }
 
     private static void Turn(OrderType orderType, MarsPosition position) {
