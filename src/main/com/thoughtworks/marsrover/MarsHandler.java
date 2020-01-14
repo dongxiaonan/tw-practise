@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class MarsHandler {
-    public static MarsPosition Handle(List<MarsOrder> marsOrder) {
+    public static MarsPosition handle(List<MarsOrder> marsOrder) {
         if (!isInputOrdersValid(marsOrder)){
             return null;
         }
@@ -17,8 +17,8 @@ public class MarsHandler {
         MarsPosition position = initMarsPosition(marsOrder);
         for (MarsOrder order : marsOrder){
             switch (order.orderType){
-                case MOVE -> MoveNext(position);
-                case TURNL, TURNR -> Turn(order.orderType, position);
+                case MOVE -> moveNext(position);
+                case TURNL, TURNR -> turn(order.orderType, position);
             }
         }
 
@@ -45,7 +45,7 @@ public class MarsHandler {
         return new MarsPosition(initOrder.startPoint, initOrder.startDirection);
     }
 
-    private static void Turn(OrderType orderType, MarsPosition position) {
+    private static void turn(OrderType orderType, MarsPosition position) {
         int turn = 0;
         switch (orderType){
             case TURNR -> turn = 1;
@@ -62,7 +62,7 @@ public class MarsHandler {
         position.direction = allDirections[newDirectionIndex];
     }
 
-    private static void MoveNext(MarsPosition position) {
+    private static void moveNext(MarsPosition position) {
         switch (position.direction){
             case N -> position.point.marsY++;
             case S -> position.point.marsY--;

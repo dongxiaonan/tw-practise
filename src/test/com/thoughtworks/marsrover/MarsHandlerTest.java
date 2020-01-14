@@ -12,7 +12,7 @@ public class MarsHandlerTest {
         MarsPoint startPoint = new MarsPoint(0, 0);
         MarsPosition expectedPosition = new MarsPosition(startPoint, Direction.N);
         MarsOrder marsOrder = new MarsOrder(startPoint, Direction.N);
-        MarsPosition actualPosition = MarsHandler.Handle(Arrays.asList(marsOrder));
+        MarsPosition actualPosition = MarsHandler.handle(Arrays.asList(marsOrder));
         assertEquals(expectedPosition, actualPosition);
     }
 
@@ -42,7 +42,7 @@ public class MarsHandlerTest {
         MarsPoint startPoint = new MarsPoint(0, 0);
         MarsOrder initOrder = new MarsOrder(startPoint, Direction.N);
         MarsOrder moveOrder = new MarsOrder(OrderType.MOVE);
-        MarsPosition actualPosition = MarsHandler.Handle(Arrays.asList(initOrder, moveOrder));
+        MarsPosition actualPosition = MarsHandler.handle(Arrays.asList(initOrder, moveOrder));
         assertEquals(new MarsPosition(new MarsPoint(0, 1), Direction.N), actualPosition);
     }
 
@@ -51,7 +51,7 @@ public class MarsHandlerTest {
         MarsPoint startPoint = new MarsPoint(0, 0);
         MarsOrder initOrder = new MarsOrder(startPoint, Direction.N);
         MarsOrder turnLeftOrder = new MarsOrder(OrderType.TURNL);
-        MarsPosition actualPosition = MarsHandler.Handle(Arrays.asList(initOrder, turnLeftOrder));
+        MarsPosition actualPosition = MarsHandler.handle(Arrays.asList(initOrder, turnLeftOrder));
         assertEquals(new MarsPosition(startPoint, Direction.W), actualPosition);
     }
 
@@ -60,7 +60,7 @@ public class MarsHandlerTest {
         MarsPoint startPoint = new MarsPoint(0, 0);
         MarsOrder initOrder = new MarsOrder(startPoint, Direction.N);
         MarsOrder turnRightOrder = new MarsOrder(OrderType.TURNR);
-        MarsPosition actualPosition = MarsHandler.Handle(Arrays.asList(initOrder, turnRightOrder));
+        MarsPosition actualPosition = MarsHandler.handle(Arrays.asList(initOrder, turnRightOrder));
         assertEquals(new MarsPosition(startPoint, Direction.E), actualPosition);
     }
 
@@ -72,14 +72,14 @@ public class MarsHandlerTest {
         MarsOrder turnLeftOrder = new MarsOrder(OrderType.TURNL);
         MarsOrder turnRightOrder = new MarsOrder(OrderType.TURNR);
 
-        MarsPosition actualPosition = MarsHandler.Handle(Arrays.asList(initOrder, moveOrder, turnRightOrder, moveOrder, turnLeftOrder));
+        MarsPosition actualPosition = MarsHandler.handle(Arrays.asList(initOrder, moveOrder, turnRightOrder, moveOrder, turnLeftOrder));
         assertEquals(new MarsPosition(new MarsPoint(1, 1), Direction.N), actualPosition);
     }
 
     @Test
     public void should_return_null_when_no_init_order(){
         MarsOrder moveOrder = new MarsOrder(OrderType.MOVE);
-        assertNull(MarsHandler.Handle(Arrays.asList(moveOrder)));
+        assertNull(MarsHandler.handle(Arrays.asList(moveOrder)));
     }
 
     @Test
@@ -88,7 +88,7 @@ public class MarsHandlerTest {
         MarsOrder initOrder = new MarsOrder(startPoint, Direction.N);
 
         MarsOrder moveOrder = new MarsOrder(OrderType.MOVE);
-        assertNull(MarsHandler.Handle(Arrays.asList(moveOrder, initOrder)));
+        assertNull(MarsHandler.handle(Arrays.asList(moveOrder, initOrder)));
     }
 
     @Test
@@ -97,7 +97,7 @@ public class MarsHandlerTest {
         MarsOrder initOrder = new MarsOrder(startPoint, Direction.N);
 
         MarsOrder moveOrder = new MarsOrder(OrderType.MOVE);
-        assertNull(MarsHandler.Handle(Arrays.asList(initOrder, moveOrder, initOrder)));
+        assertNull(MarsHandler.handle(Arrays.asList(initOrder, moveOrder, initOrder)));
     }
 
     @Test
@@ -105,6 +105,6 @@ public class MarsHandlerTest {
         MarsPoint startPoint = new MarsPoint(0, 0);
         MarsOrder initOrder = new MarsOrder(startPoint, Direction.N);
 
-        assertNull(MarsHandler.Handle(Arrays.asList(initOrder, null)));
+        assertNull(MarsHandler.handle(Arrays.asList(initOrder, null)));
     }
 }
