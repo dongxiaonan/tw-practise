@@ -19,28 +19,28 @@ public class MarsHandler {
             MarsOrder order = marsOrder.get(index);
             switch (order.orderType){
                 case MOVE -> MoveNext(position);
-                case TURNL -> TurnLeft(position);
-                case TURNR -> TurnRight(position);
+                case TURNL, TURNR -> Turn(order.orderType, position);
             }
         }
 
         return position;
     }
 
-    private static void TurnRight(MarsPosition position) {
+    private static void Turn(OrderType orderType, MarsPosition position) {
+        int turn = 0;
+        switch (orderType){
+            case TURNR -> turn = 1;
+            case TURNL -> turn = -1;
+        }
+
+        if (turn == 0){
+            return;
+        }
+
         Direction[] allDirections = Direction.values();
         int directionLength = allDirections.length;
-        int newDirectionIndex = (directionLength + position.direction.ordinal() + 1) % directionLength;
+        int newDirectionIndex = (directionLength + position.direction.ordinal() + turn) % directionLength;
         position.direction = allDirections[newDirectionIndex];
-    }
-
-    private static void TurnLeft(MarsPosition position) {
-        switch (position.direction){
-            case N -> position.direction = Direction.W;
-            case S -> position.direction = Direction.E;
-            case E -> position.direction = Direction.N;
-            case W -> position.direction = Direction.S;
-        }
     }
 
     private static void MoveNext(MarsPosition position) {
