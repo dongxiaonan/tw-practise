@@ -29,6 +29,7 @@ public class MarsRover {
                 case L , R -> new TurnCommandHandler(command).execute(this);
             }
         scan();
+        healthCheck();
         }
     }
 
