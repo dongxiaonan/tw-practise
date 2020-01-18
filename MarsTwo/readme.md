@@ -5,6 +5,9 @@
 - 触发不能移动后如何操作？返回， init？
 - 触发不能移动后， 旧地的车还在地图上？ 不回收？
 
+2. bus, 转弯的时候， 右侧两格不能是X， 如何理解？
+
+
 
 # 假设
 结合实际情况， 地图是来到火星时就知道的， 假设地图是所有车共享信息。
@@ -28,7 +31,7 @@ BUS|TRACK, 占两个，任何一个掉坑里or 触发不能移动都结束
 - add radar and map
 - radar get is in hole, and mark in map
 - init map info with can move range, ignore M when in that range
-- add broken status, BL, BR, BB, BM
+- add broken status, BL, BR
 - add with type.
 - bus|track handle L , R 
 - track add BH, BT 

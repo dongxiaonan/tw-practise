@@ -14,7 +14,7 @@ public class TurnCommandHandler extends BaseCommandHandler{
     public void execute(MarsRover rover) {
         int turn = rover.workStatus == RoverWorkStatus.Forward  ^ command == Command.R ? -1 : 1;
 
-        if (canTurn(turn, rover.brokenParts)){
+        if (canTurn(turn, rover.brokenParts, rover)){
             return;
         }
 
@@ -24,7 +24,15 @@ public class TurnCommandHandler extends BaseCommandHandler{
         rover.facing = allDirections[newDirectionIndex];
     }
 
-    private boolean canTurn(int turn, List<CarPart> brokenParts) {
-        return (brokenParts.contains(CarPart.LEFTWHEEL) && turn == -1) || (brokenParts.contains(CarPart.RIGHTWHEEL) && turn == 1);
+    private static boolean canTurn(int turn, List<CarPart> brokenParts, MarsRover rover) {
+        boolean canTurnWhenNotBreak = (brokenParts.contains(CarPart.LEFTWHEEL) && turn == -1) || (brokenParts.contains(CarPart.RIGHTWHEEL) && turn == 1);
+
+        if (rover.carType == CarType.DEFAULT ){
+            return canTurnWhenNotBreak;
+        }
+
+        boolean canTurnWhenHasEnoughSpace = !rover.map.get(rover.position).equals("X") &&  !rover.map.get(rover.getCarTailPosition()).equals("X");
+        return canTurnWhenNotBreak && canTurnWhenHasEnoughSpace;
     }
+
 }

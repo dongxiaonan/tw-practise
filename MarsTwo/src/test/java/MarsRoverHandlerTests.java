@@ -13,14 +13,14 @@ public class MarsRoverHandlerTests {
     private Map<MarsPosition, String> marsMap;
     private MarsRover rover;
     private MarsRadar marsRadar;
+    private MarsRoverFactory marsRoverFactory;
 
     @Before
     public void setup(){
         marsMap = new HashMap<>();
         marsRadar = mock(MarsRadar.class);
-        var marsRoverFactory = new MarsRoverFactory(marsMap, marsRadar);
-        MarsPosition marsPosition = new MarsPosition(0, 0);
-        rover = marsRoverFactory.init(marsPosition, MarsDirection.N);
+        marsRoverFactory = new MarsRoverFactory(marsMap, marsRadar);
+        rover = marsRoverFactory.init(new MarsPosition(0, 0), MarsDirection.N, CarType.DEFAULT);
     }
     @Test
     public void should_init_rover_with_init_status(){
@@ -101,6 +101,7 @@ public class MarsRoverHandlerTests {
         rover.handle(Arrays.asList(Command.B, Command.R));
         Assert.assertEquals(MarsDirection.N, rover.facing);
     }
+
     @Test
     public void should_ignore_turn_right_when_right_wheel_broken(){
         rover.brokenParts.add(CarPart.RIGHTWHEEL);
@@ -110,5 +111,19 @@ public class MarsRoverHandlerTests {
 
         rover.handle(Arrays.asList(Command.B, Command.L));
         Assert.assertEquals(MarsDirection.N, rover.facing);
+    }
+
+    @Test
+    public void should_not_turn_when_no_space_for_bus(){
+        marsMap.put(new MarsPosition(0, 1), "X");
+        MarsRover bus = marsRoverFactory.init(new MarsPosition(0, 0), MarsDirection.N, CarType.BUS);
+
+        bus.handle(Arrays.asList(Command.R));
+        Assert.assertEquals(MarsDirection.N, bus.facing);
+        Assert.assertEquals(new MarsPosition(0, 0), bus.position);
+
+        bus.handle(Arrays.asList(Command.L));
+        Assert.assertEquals(MarsDirection.N, bus.facing);
+        Assert.assertEquals(new MarsPosition(0, 0), bus.position);
     }
 }

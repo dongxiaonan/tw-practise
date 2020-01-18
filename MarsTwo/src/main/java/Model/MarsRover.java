@@ -16,8 +16,10 @@ public class MarsRover {
     public MarsDirection facing;
     public RoverWorkStatus workStatus;
     public MarsRadar marsRadar;
+    public CarType carType;
+    public List<CarPart> brokenParts;
+
     public static Map<MarsPosition, String> map;
-    public List<CarPart> brokenParts = new ArrayList<>();
 
     public void handle(List<Command> commands) {
         for (Command command : commands) {
@@ -28,6 +30,17 @@ public class MarsRover {
             }
         scan();
         }
+    }
+
+    public  MarsPosition getCarTailPosition() {
+        MarsPosition carTailPosition = position;
+        switch (facing){
+            case N -> carTailPosition.y --;
+            case S -> carTailPosition.y ++;
+            case E -> carTailPosition.x --;
+            case W -> carTailPosition.x ++;
+        }
+        return carTailPosition;
     }
 
     private void scan() {
