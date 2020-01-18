@@ -46,6 +46,7 @@ public class MarsRoverHandlerTests {
     @Test
     public void should_backward_when_get_B_command(){
         rover.handle(Arrays.asList(Command.B));
+        Assert.assertEquals(MarsDirection.N, rover.facing);
         Assert.assertEquals(RoverWorkStatus.Backward, rover.workStatus);
 
         rover.handle(Arrays.asList(Command.B, Command.B));
