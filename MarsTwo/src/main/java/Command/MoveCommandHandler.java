@@ -1,6 +1,7 @@
 package Command;
 
 import Model.MarsRover;
+import Model.RoverWorkStatus;
 
 public class MoveCommandHandler extends BaseCommandHandler{
 
@@ -10,7 +11,7 @@ public class MoveCommandHandler extends BaseCommandHandler{
 
     @Override
     public void execute(MarsRover rover) {
-        int step = 1;
+        int step = rover.workStatus == RoverWorkStatus.Forward ? 1 : -1;
         switch (rover.facing){
             case N -> rover.position.y += step;
             case S -> rover.position.y -= step;

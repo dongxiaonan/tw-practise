@@ -38,5 +38,8 @@ public class MarsRoverHandlerTests {
 
         rover.handle(Arrays.asList(Command.B, Command.B));
         Assert.assertEquals(RoverWorkStatus.Forward, rover.workStatus);
+
+        rover.handle(Arrays.asList(Command.B, Command.M));
+        Assert.assertEquals(new MarsPosition(0, -1), rover.position);
     }
 }
