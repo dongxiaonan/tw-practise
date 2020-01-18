@@ -90,4 +90,25 @@ public class MarsRoverHandlerTests {
         rover.handle(Arrays.asList(Command.M));
         Assert.assertEquals(new MarsPosition(0, 0), rover.position);
     }
+
+    @Test
+    public void should_ignore_turn_left_when_left_wheel_broken(){
+        rover.brokenParts.add(CarPart.LEFTWHEEL);
+
+        rover.handle(Arrays.asList(Command.L));
+        Assert.assertEquals(MarsDirection.N, rover.facing);
+
+        rover.handle(Arrays.asList(Command.B, Command.R));
+        Assert.assertEquals(MarsDirection.N, rover.facing);
+    }
+    @Test
+    public void should_ignore_turn_right_when_right_wheel_broken(){
+        rover.brokenParts.add(CarPart.RIGHTWHEEL);
+
+        rover.handle(Arrays.asList(Command.R));
+        Assert.assertEquals(MarsDirection.N, rover.facing);
+
+        rover.handle(Arrays.asList(Command.B, Command.L));
+        Assert.assertEquals(MarsDirection.N, rover.facing);
+    }
 }
