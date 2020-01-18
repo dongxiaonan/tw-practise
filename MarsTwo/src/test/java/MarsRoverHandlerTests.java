@@ -2,6 +2,7 @@ import Command.Command;
 import Model.MarsDirection;
 import Model.MarsPosition;
 import Model.MarsRover;
+import Model.RoverWorkStatus;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,11 +22,21 @@ public class MarsRoverHandlerTests {
     public void should_init_rover_with_init_status(){
         Assert.assertEquals(new MarsPosition(0, 0), rover.position);
         Assert.assertEquals(MarsDirection.N, rover.facing);
+        Assert.assertEquals(RoverWorkStatus.Forward, rover.workStatus);
     }
 
     @Test
     public void should_move_when_get_M_command(){
         rover.handle(Arrays.asList(Command.M));
-        Assert.assertEquals(new MarsPosition(0, 0), rover.position);
+        Assert.assertEquals(new MarsPosition(0, 1), rover.position);
+    }
+
+    @Test
+    public void should_backward_when_get_B_command(){
+        rover.handle(Arrays.asList(Command.B));
+        Assert.assertEquals(RoverWorkStatus.Backward, rover.workStatus);
+
+        rover.handle(Arrays.asList(Command.B, Command.B));
+        Assert.assertEquals(RoverWorkStatus.Forward, rover.workStatus);
     }
 }
