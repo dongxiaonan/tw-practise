@@ -1,6 +1,6 @@
 package Model;
 
-import Command.*;
+import CommandHandler.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 

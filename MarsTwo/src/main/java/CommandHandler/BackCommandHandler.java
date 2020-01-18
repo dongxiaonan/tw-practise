@@ -1,5 +1,6 @@
-package Command;
+package CommandHandler;
 
+import Model.Command;
 import Model.MarsRover;
 import Model.RoverWorkStatus;
 

@@ -1,4 +1,4 @@
-import Command.Command;
+import Model.Command;
 import Model.*;
 import org.junit.Assert;
 import org.junit.Before;
@@ -73,5 +73,21 @@ public class MarsRoverHandlerTests {
 
         rover.handle(Arrays.asList(Command.M));
         Assert.assertEquals("X", marsMap.get(new MarsPosition(0, 1)));
+    }
+
+    @Test
+    public void should_ignore_command_when_go_to_hole(){
+        marsMap.put(new MarsPosition(0, 1), "X");
+
+        rover.handle(Arrays.asList(Command.M));
+        Assert.assertEquals(new MarsPosition(0, 0), rover.position);
+    }
+
+    @Test
+    public void should_ignore_command_when_rover_on_can_move_range(){
+        marsMap.put(new MarsPosition(0, 0), "S");
+
+        rover.handle(Arrays.asList(Command.M));
+        Assert.assertEquals(new MarsPosition(0, 0), rover.position);
     }
 }
