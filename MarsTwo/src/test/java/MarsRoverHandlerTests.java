@@ -1,22 +1,26 @@
 import Command.Command;
-import Model.MarsDirection;
-import Model.MarsPosition;
-import Model.MarsRover;
-import Model.RoverWorkStatus;
+import Model.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.*;
 
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 public class MarsRoverHandlerTests {
-    private Map<MarsPosition, String> marsMap = new HashMap<>();
+    private Map<MarsPosition, String> marsMap;
     private MarsRover rover;
+    private MarsRadar marsRadar;
 
     @Before
     public void setup(){
+        marsMap = new HashMap<>();
+        marsRadar = mock(MarsRadar.class);
+        var marsRoverFactory = new MarsRoverFactory(marsMap, marsRadar);
         MarsPosition marsPosition = new MarsPosition(0, 0);
-        rover = MarsRoverFactory.init(marsPosition, MarsDirection.N);
+        rover = marsRoverFactory.init(marsPosition, MarsDirection.N);
     }
     @Test
     public void should_init_rover_with_init_status(){
@@ -60,5 +64,14 @@ public class MarsRoverHandlerTests {
 
         rover.handle(Arrays.asList(Command.B, Command.R));
         Assert.assertEquals(MarsDirection.W, rover.facing);
+    }
+
+    @Test
+    public void should_mark_in_map_when_rover_is_in_hole(){
+        when(marsRadar.isInHole()).thenReturn(true);
+        Assert.assertFalse(marsMap.containsKey(new MarsPosition(0, 1)));
+
+        rover.handle(Arrays.asList(Command.M));
+        Assert.assertEquals("X", marsMap.get(new MarsPosition(0, 1)));
     }
 }

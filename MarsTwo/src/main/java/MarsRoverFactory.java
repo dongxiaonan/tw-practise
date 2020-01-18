@@ -1,9 +1,16 @@
-import Model.MarsDirection;
-import Model.MarsPosition;
-import Model.MarsRover;
+import Model.*;
+import lombok.AllArgsConstructor;
 
+import java.util.Map;
+
+@AllArgsConstructor
 public class MarsRoverFactory {
-    public static MarsRover init(MarsPosition marsPosition, MarsDirection direction) {
-        return null;
+    public Map<MarsPosition, String> marsMap;
+    public MarsRadar marsRadar;
+
+    public MarsRover init(MarsPosition marsPosition, MarsDirection direction) {
+        MarsRover marsRover = new MarsRover(marsPosition, direction, RoverWorkStatus.Forward, marsRadar);
+        MarsRover.map = marsMap;
+        return marsRover;
     }
 }
