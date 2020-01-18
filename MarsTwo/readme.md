@@ -6,6 +6,7 @@
 - 触发不能移动后， 旧地的车还在地图上？ 不回收？
 
 2. bus, 转弯的时候， 右侧两格不能是X， 如何理解？
+ 对于bus, track, 在处理unmove range 和isinHole的时候，均需check两个点
 
 
 
