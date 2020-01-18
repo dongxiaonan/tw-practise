@@ -32,6 +32,18 @@ public class MarsRoverHandlerTests {
     }
 
     @Test
+    public void should_move_when_get_L_command(){
+        rover.handle(Arrays.asList(Command.L));
+        Assert.assertEquals(MarsDirection.W, rover.facing);
+    }
+
+    @Test
+    public void should_move_when_get_R_command(){
+        rover.handle(Arrays.asList(Command.R));
+        Assert.assertEquals(MarsDirection.E, rover.facing);
+    }
+
+    @Test
     public void should_backward_when_get_B_command(){
         rover.handle(Arrays.asList(Command.B));
         Assert.assertEquals(RoverWorkStatus.Backward, rover.workStatus);
@@ -41,5 +53,11 @@ public class MarsRoverHandlerTests {
 
         rover.handle(Arrays.asList(Command.B, Command.M));
         Assert.assertEquals(new MarsPosition(0, -1), rover.position);
+
+        rover.handle(Arrays.asList(Command.B, Command.L));
+        Assert.assertEquals(MarsDirection.E, rover.facing);
+
+        rover.handle(Arrays.asList(Command.B, Command.R));
+        Assert.assertEquals(MarsDirection.W, rover.facing);
     }
 }

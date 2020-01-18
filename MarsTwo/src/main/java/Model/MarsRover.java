@@ -18,6 +18,7 @@ public class MarsRover {
             switch (command){
                 case M -> new MoveCommandHandler().execute(this);
                 case B -> new BackCommandHandler().execute(this);
+                case L , R -> new TurnCommandHandler(command).execute(this);
             }
 
         }
